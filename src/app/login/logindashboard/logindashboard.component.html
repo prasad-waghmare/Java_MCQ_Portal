@@ -1,0 +1,19 @@
+<div class="container">
+  <button (click)="whatToShow(1)">Login</button>
+  <button (click)="whatToShow(2)">Registration</button>
+  <button (click)="whatToShow(3)">Reset Password</button>
+</div>
+
+<div *ngIf="isShow==1">
+  <app-userlogin></app-userlogin>
+</div>
+
+<div *ngIf="isShow==2">
+  <app-userregistration></app-userregistration>
+</div>
+
+<div *ngIf="isShow==3">
+  <app-resetpassword></app-resetpassword>
+</div>
+
+

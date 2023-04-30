@@ -1,0 +1,67 @@
+<br>
+Select Topic Name: <br>
+<select (change)="selectTopic($event)">
+  <Option>Select</Option>
+  <Option *ngFor="let topic of AllTopicList">{{topic.topicName}}</Option>
+</select>
+<br><hr>
+
+<!-- It Shows List of Questions of Selected Topic -->
+<div *ngIf="selectedTopic.length!=0 && showDetails==0">
+  <table border="1">
+    <tr>
+      <td>SN</td>
+      <td>Short Name</td>
+      <td>Action</td>
+    </tr>
+    <tr *ngFor="let question of allQuestionOfTopic ; let i=index">
+      <td>{{i+1}}</td>
+      <td>{{question.shortName}}</td>
+      <td>
+        <button (click)="deleteQuestion(question.id)">Delete</button>
+        <button (click)="showDetailsOfQuestion(question.id)">ShowQuestion</button>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<!-- It Shows QuestionDetains of Questions of Selected Topic -->
+<div *ngIf="showDetails==1">
+
+  <button (click)="backToMenu()">Back</button><br>
+  Question Details:- <br><br>
+
+  Question ShortName : <br>
+  <textarea rows="1" cols="45">{{myQuestionDetail.shortName}}</textarea><br>
+  QuestionName : <br>
+  <textarea rows="3" cols="45" >{{myQuestionDetail.questionDetail}}</textarea><br>
+  Option A : <textarea rows="2" cols="35" [value]="myQuestionDetail.optionA"></textarea><br>
+  Option B : <textarea rows="2" cols="35" [value]="myQuestionDetail.optionB"></textarea><br>
+  Option C : <textarea rows="2" cols="35" [value]="myQuestionDetail.optionC"></textarea><br>
+  Option D : <textarea rows="2" cols="35" [value]="myQuestionDetail.optionD"></textarea><br>
+
+  <hr>
+  Correct Answer : <input type="text" [value]="myQuestionDetail.correctAns"><br>
+  <button (click)="updateDiv()">Update Question</button>
+
+</div>
+
+<!-- It Shows Selected Question Details to Update -->
+<div *ngIf="showDetails==2">
+  <button (click)="backToMenu()">Back To Main</button><br>
+  Make The Changes In Question:- <br><br>
+
+  Question ShortName : <br>
+  <textarea rows="1" cols="45" [(ngModel)]="myQuestionDetail.shortName"></textarea><br>
+  Question Details : <br>
+  <textarea rows="3" cols="45" [(ngModel)]="myQuestionDetail.questionDetail"></textarea><br>
+  Option A : <textarea rows="2" cols="35" [(ngModel)]="myQuestionDetail.optionA"></textarea><br>
+  Option B : <textarea rows="2" cols="35" [(ngModel)]="myQuestionDetail.optionB"></textarea><br>
+  Option C : <textarea rows="2" cols="35" [(ngModel)]="myQuestionDetail.optionC"></textarea><br>
+  Option D : <textarea rows="2" cols="35" [(ngModel)]="myQuestionDetail.optionD"></textarea><br>
+
+  <hr>
+  Correct Answer : <input type="text" [(ngModel)]="myQuestionDetail.correctAns"><br>
+  <button (click)="updateQuestion()">Save Changes</button>
+</div>
+

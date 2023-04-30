@@ -1,0 +1,21 @@
+<br>
+Welcome Dear, <em><strong>{{this.service.getData().firstName+" "+this.service.getData().lastName}}</strong></em>
+<hr>
+<div class="container">
+  <button (click)="whatToShow(1)">Add Topic</button>
+  <button (click)="whatToShow(2)">Add Question</button>
+  <button (click)="whatToShow(3)">Show All Questions</button>
+  <button (click)="logout()">Logout</button>
+</div>
+
+<div *ngIf="isShow==1">
+  <app-addtopic></app-addtopic>
+</div>
+
+<div *ngIf="isShow==2">
+  <app-addquestion></app-addquestion>
+</div>
+
+<div *ngIf="isShow==3">
+  <app-showallquestion></app-showallquestion>
+</div>

@@ -1,0 +1,17 @@
+<h1>WELCOME To MCQ Exam Portal</h1>
+<hr>
+<div *ngIf="whoseLogin==0">
+  <app-logindashboard></app-logindashboard>
+</div>
+
+<div *ngIf="whoseLogin==1">
+  <app-trainerdashboard></app-trainerdashboard>
+</div>
+
+<div *ngIf="whoseLogin==2">
+  <app-studentdashboard></app-studentdashboard>
+</div>
+
+<div *ngIf="whoseLogin==3">
+  <app-superadmindashboard></app-superadmindashboard>
+</div>
